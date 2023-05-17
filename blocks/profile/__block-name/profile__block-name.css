@@ -1,0 +1,18 @@
+.profile__block-name {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+}
+
+@media screen and (max-width: 768px) {
+  .profile__block-name {
+    padding-left: calc(24px + 18px);
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .profile__block-name {
+    gap: 10px;
+    padding-left: calc(18px + 10px);
+  }
+}

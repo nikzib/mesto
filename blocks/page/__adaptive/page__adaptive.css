@@ -1,0 +1,23 @@
+.page__adaptive {
+  margin-left: auto;
+  margin-right: auto;
+  width: calc(100% - 2 * 200px);
+}
+
+@media screen and (max-width: 1024px) {
+  .page__adaptive {
+    width: calc(100% - 2 * 80px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .page__adaptive {
+    width: calc(100% - 2 * 40px);
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .page__adaptive {
+    width: calc(100% - 2 * 19px);
+  }
+}
