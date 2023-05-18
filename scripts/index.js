@@ -16,12 +16,13 @@ closePopupButtonEl.addEventListener("click", function () {
 });
 
 nameInputEl.value = pageTitleEl.textContent;
+subnameInputEl.value = pageSubtitleEl.textContent;
 
 editFormEl.addEventListener("submit", function (event) {
   event.preventDefault();
 
   pageTitleEl.textContent = nameInputEl.value;
-  pageSubtitleEl.textContent = nameInputEl.value;
+  pageSubtitleEl.textContent = subnameInputEl.value;
 
   closePopup(editPopupEl);
 });
