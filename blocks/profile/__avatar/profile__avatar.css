@@ -5,9 +5,9 @@
   object-fit: contain;
 }
 
-@media screen and (max-width: 425px) {
+/* @media screen and (max-width: 425px) {
   .profile__avatar {
     max-width: 168px;
     max-height: 128px;
   }
-}
+} */

@@ -9,6 +9,8 @@ const editFormEl = document.querySelector("#edit-form");
 
 openPopupButtonEl.addEventListener("click", function () {
   openPopup(editPopupEl);
+  nameInputEl.value = pageTitleEl.textContent;
+  subnameInputEl.value = pageSubtitleEl.textContent;
 });
 
 closePopupButtonEl.addEventListener("click", function () {

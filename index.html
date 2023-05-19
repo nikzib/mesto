@@ -20,7 +20,7 @@
       <section class="profile page__adaptive">
         <img
           class="profile__avatar"
-          src="./images/Jacques-Yves Cousteau.jpg"
+          src="./images/Jacques-Yves_Cousteau.jpg"
           alt="Аватар"
         />
         <div class="profile__info">
@@ -30,6 +30,7 @@
               id="open-popup-button"
               class="profile__button-edit"
               type="button"
+              aria-label="Изменение"
             ></button>
           </div>
           <p class="profile__profession">Исследователь океана</p>
@@ -37,72 +38,84 @@
         <button class="profile__button-add" type="button"></button>
       </section>
       <section class="elements page__adaptive">
-        <div class="element">
+        <article class="element">
           <img
             class="element__image"
             src="./images/Karachayevsk.jpg"
-            alt="Фото карточки"
+            alt="Карачаевск"
           />
           <div class="element__content">
             <h2 class="element__title">Карачаевск</h2>
-            <button class="element__like-button" type="button"></button>
+            <button
+              aria-label="Нравится"
+              class="element__like-button"
+              type="button"
+            ></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img
             class="element__image"
-            src="./images/Mount Elbrus.jpg"
-            alt="Фото карточки"
+            src="./images/Mount_Elbrus.jpg"
+            alt="Гора Эльбрус"
           />
           <div class="element__content">
             <h2 class="element__title">Гора Эльбрус</h2>
-            <button class="element__like-button" type="button"></button>
+            <button
+              aria-label="Нравится"
+              class="element__like-button"
+              type="button"
+            ></button>
           </div>
-        </div>
-        <div class="element">
-          <img
-            class="element__image"
-            src="./images/Dombay.jpg"
-            alt="Фото карточки"
-          />
+        </article>
+        <article class="element">
+          <img class="element__image" src="./images/Dombay.jpg" alt="Домбай" />
           <div class="element__content">
             <h2 class="element__title">Домбай</h2>
-            <button class="element__like-button" type="button"></button>
+            <button
+              aria-label="Нравится"
+              class="element__like-button"
+              type="button"
+            ></button>
           </div>
-        </div>
-        <div class="element">
-          <img
-            class="element__image"
-            src="./images/Altay.jpg"
-            alt="Фото карточки"
-          />
+        </article>
+        <article class="element">
+          <img class="element__image" src="./images/Altay.jpg" alt="Алтай" />
           <div class="element__content">
             <h2 class="element__title">Алтай</h2>
-            <button class="element__like-button" type="button"></button>
+            <button
+              aria-label="Нравится"
+              class="element__like-button"
+              type="button"
+            ></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img
             class="element__image"
-            src="./images/Curonian Spit.jpg"
-            alt="Фото карточки"
+            src="./images/Curonian_Spit.jpg"
+            alt="Куршская коса"
           />
           <div class="element__content">
             <h2 class="element__title">Куршская коса</h2>
-            <button class="element__like-button" type="button"></button>
+            <button
+              aria-label="Нравится"
+              class="element__like-button"
+              type="button"
+            ></button>
           </div>
-        </div>
-        <div class="element">
-          <img
-            class="element__image"
-            src="./images/Taiga.jpg"
-            alt="Фото карточки"
-          />
+        </article>
+        <article class="element">
+          <img class="element__image" src="./images/Taiga.jpg" alt="Тайга" />
           <div class="element__content">
             <h2 class="element__title">Тайга</h2>
-            <button class="element__like-button" type="button"></button>
+            <button
+              aria-label="Нравится"
+              class="element__like-button"
+              type="button"
+            ></button>
           </div>
-        </div>
+        </article>
       </section>
     </main>
     <footer class="footer page__adaptive">
@@ -110,13 +123,32 @@
     </footer>
     <div id="edit-popup" class="popup">
       <div class="popup__conteiner page__adaptive">
-        <form id="edit-form" class="popup__form">
+        <form id="edit-form" class="popup__form" name="popup-form">
           <h2 class="popup__title">Редактировать профиль</h2>
-          <input id="popup__name-input" type="text" class="popup__input" />
-          <input id="popup__subname-input" type="text" class="popup__input" />
-          <button type="submit" class="popup__button">Сохранить</button>
+          <input
+            id="popup__name-input"
+            type="text"
+            class="popup__input"
+            name="name-input"
+            placeholder="Введите имя"
+          />
+          <input
+            id="popup__subname-input"
+            type="text"
+            class="popup__input"
+            name="subname-input"
+            placeholder="Введите описание"
+          />
+          <button aria-label="Сохранение" class="popup__button" type="submit">
+            Сохранить
+          </button>
         </form>
-        <button id="close-popup-button" class="popup__close-button"></button>
+        <button
+          aria-label="Закрытие"
+          id="close-popup-button"
+          class="popup__close-button"
+          type="button"
+        ></button>
       </div>
     </div>
   </body>
