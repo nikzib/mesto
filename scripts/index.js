@@ -36,3 +36,51 @@ function openPopup(popupEl) {
 function closePopup(popupEl) {
   popupEl.classList.remove("popup_opened");
 }
+
+/* Раздел: карточки */
+
+/* Исходные карточки из "коробки" */
+
+const initialCards = [
+  {
+    name: "Архыз",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
+  },
+  {
+    name: "Челябинская область",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
+  },
+  {
+    name: "Иваново",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
+  },
+  {
+    name: "Камчатка",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
+  },
+  {
+    name: "Холмогорский район",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
+  },
+  {
+    name: "Байкал",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
+  },
+];
+
+function createCards(...cards) {
+  const cardsElement = document.querySelector(".elements");
+  const cardTemplate = document.querySelector("#element").content;
+
+  cards.forEach((card) => {
+    const cardElement = cardTemplate.querySelector(".element").cloneNode(true);
+
+    cardElement.querySelector(".element__image").src = card.link;
+    cardElement.querySelector(".element__image").alt = card.name;
+    cardElement.querySelector(".element__title").textContent = card.name;
+
+    cardsElement.prepend(cardElement);
+  });
+}
+
+createCards(...initialCards);

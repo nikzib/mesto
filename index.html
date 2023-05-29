@@ -38,89 +38,27 @@
         <button class="profile__button-add" type="button"></button>
       </section>
       <section class="elements page__adaptive">
-        <article class="element">
-          <img
-            class="element__image"
-            src="./images/Karachayevsk.jpg"
-            alt="Карачаевск"
-          />
-          <div class="element__content">
-            <h2 class="element__title">Карачаевск</h2>
-            <button
-              aria-label="Нравится"
-              class="element__like-button"
-              type="button"
-            ></button>
+        <template id="element">
+          <div class="element">
+            <img src="#" alt="#" class="element__image" />
+            <div class="element__content">
+              <h2 class="element__title">#</h2>
+              <button
+                type="button"
+                class="element__like-button"
+                aria-label="Нравится"
+              ></button>
+            </div>
           </div>
-        </article>
-        <article class="element">
-          <img
-            class="element__image"
-            src="./images/Mount_Elbrus.jpg"
-            alt="Гора Эльбрус"
-          />
-          <div class="element__content">
-            <h2 class="element__title">Гора Эльбрус</h2>
-            <button
-              aria-label="Нравится"
-              class="element__like-button"
-              type="button"
-            ></button>
-          </div>
-        </article>
-        <article class="element">
-          <img class="element__image" src="./images/Dombay.jpg" alt="Домбай" />
-          <div class="element__content">
-            <h2 class="element__title">Домбай</h2>
-            <button
-              aria-label="Нравится"
-              class="element__like-button"
-              type="button"
-            ></button>
-          </div>
-        </article>
-        <article class="element">
-          <img class="element__image" src="./images/Altay.jpg" alt="Алтай" />
-          <div class="element__content">
-            <h2 class="element__title">Алтай</h2>
-            <button
-              aria-label="Нравится"
-              class="element__like-button"
-              type="button"
-            ></button>
-          </div>
-        </article>
-        <article class="element">
-          <img
-            class="element__image"
-            src="./images/Curonian_Spit.jpg"
-            alt="Куршская коса"
-          />
-          <div class="element__content">
-            <h2 class="element__title">Куршская коса</h2>
-            <button
-              aria-label="Нравится"
-              class="element__like-button"
-              type="button"
-            ></button>
-          </div>
-        </article>
-        <article class="element">
-          <img class="element__image" src="./images/Taiga.jpg" alt="Тайга" />
-          <div class="element__content">
-            <h2 class="element__title">Тайга</h2>
-            <button
-              aria-label="Нравится"
-              class="element__like-button"
-              type="button"
-            ></button>
-          </div>
-        </article>
+        </template>
       </section>
     </main>
     <footer class="footer page__adaptive">
       <p class="footer__author">&copy; 2023 Mesto Russia</p>
     </footer>
+
+    <!-- Popup: редактирование профиля -->
+
     <div id="edit-popup" class="popup">
       <div class="popup__conteiner page__adaptive">
         <form id="edit-form" class="popup__form" name="popup-form">
