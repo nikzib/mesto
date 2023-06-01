@@ -91,6 +91,13 @@ function saveNewElement(event) {
   newElementLink.value = "";
 }
 
+// Функция установления like
+function likeElement(event) {
+  event.target
+    .closest(".element__like-button")
+    .classList.toggle("element__like-button_active");
+}
+
 // Функция генерирования новых элементов
 function createElements(...elements) {
   const cardsElement = document.querySelector(".elements");
@@ -104,6 +111,10 @@ function createElements(...elements) {
     cardElement.querySelector(".element__image").src = element.link; // заполнение элемента
     cardElement.querySelector(".element__image").alt = element.name;
     cardElement.querySelector(".element__title").textContent = element.name;
+
+    cardElement
+      .querySelector(".element__like-button")
+      .addEventListener("click", likeElement); // обрабатывание события like
 
     cardsElement.prepend(cardElement); // направление элемента в DOM
   });
