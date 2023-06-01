@@ -27,7 +27,6 @@
           <div class="profile__block-name">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <button
-              id="open-popup-button"
               class="profile__button-edit"
               type="button"
               aria-label="Изменение"
@@ -35,7 +34,11 @@
           </div>
           <p class="profile__profession">Исследователь океана</p>
         </div>
-        <button class="profile__button-add" type="button"></button>
+        <button
+          class="profile__button-add"
+          type="button"
+          aria-lebel="Добавление"
+        ></button>
       </section>
       <section class="elements page__adaptive">
         <template id="element">
@@ -60,30 +63,69 @@
     <!-- Popup: редактирование профиля -->
 
     <div id="edit-popup" class="popup">
-      <div class="popup__conteiner page__adaptive">
-        <form id="edit-form" class="popup__form" name="popup-form">
+      <div class="popup__container page__adaptive">
+        <form class="popup__form">
           <h2 class="popup__title">Редактировать профиль</h2>
           <input
-            id="popup__name-input"
+            id="popup-name-input"
             type="text"
             class="popup__input"
             name="name-input"
             placeholder="Введите имя"
           />
           <input
-            id="popup__subname-input"
+            id="popup-profession-input"
             type="text"
             class="popup__input"
-            name="subname-input"
+            name="profession-input"
             placeholder="Введите описание"
           />
-          <button aria-label="Сохранение" class="popup__button" type="submit">
+          <button
+            aria-label="Сохранение"
+            class="popup__save-button"
+            type="submit"
+          >
             Сохранить
           </button>
         </form>
         <button
           aria-label="Закрытие"
-          id="close-popup-button"
+          class="popup__close-button"
+          type="button"
+        ></button>
+      </div>
+    </div>
+
+    <!-- Popup: добавление элемента -->
+
+    <div id="add-popup" class="popup">
+      <div class="popup__container page__adaptive">
+        <form class="popup__form" name="popup-form">
+          <h2 class="popup__title">Новое место</h2>
+          <input
+            id="popup-title-input"
+            type="text"
+            class="popup__input"
+            name="title-input"
+            placeholder="Название"
+          />
+          <input
+            id="popup-link-input"
+            type="text"
+            class="popup__input"
+            name="link-input"
+            placeholder="Ссылка на картинку"
+          />
+          <button
+            aria-label="Сохранение"
+            class="popup__save-button"
+            type="submit"
+          >
+            Создать
+          </button>
+        </form>
+        <button
+          aria-label="Закрытие"
           class="popup__close-button"
           type="button"
         ></button>

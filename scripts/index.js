@@ -1,45 +1,4 @@
-const openPopupButtonEl = document.querySelector("#open-popup-button");
-const closePopupButtonEl = document.querySelector("#close-popup-button");
-const editPopupEl = document.querySelector("#edit-popup");
-const pageTitleEl = document.querySelector(".profile__name");
-const pageSubtitleEl = document.querySelector(".profile__profession");
-const nameInputEl = document.querySelector("#popup__name-input");
-const subnameInputEl = document.querySelector("#popup__subname-input");
-const editFormEl = document.querySelector("#edit-form");
-
-openPopupButtonEl.addEventListener("click", function () {
-  openPopup(editPopupEl);
-  nameInputEl.value = pageTitleEl.textContent;
-  subnameInputEl.value = pageSubtitleEl.textContent;
-});
-
-closePopupButtonEl.addEventListener("click", function () {
-  closePopup(editPopupEl);
-});
-
-nameInputEl.value = pageTitleEl.textContent;
-subnameInputEl.value = pageSubtitleEl.textContent;
-
-editFormEl.addEventListener("submit", function (event) {
-  event.preventDefault();
-
-  pageTitleEl.textContent = nameInputEl.value;
-  pageSubtitleEl.textContent = subnameInputEl.value;
-
-  closePopup(editPopupEl);
-});
-
-function openPopup(popupEl) {
-  popupEl.classList.add("popup_opened");
-}
-
-function closePopup(popupEl) {
-  popupEl.classList.remove("popup_opened");
-}
-
-/* Раздел: карточки */
-
-/* Исходные карточки из "коробки" */
+// Исходные элементы
 
 const initialCards = [
   {
@@ -68,19 +27,111 @@ const initialCards = [
   },
 ];
 
-function createCards(...cards) {
+// Элементы страницы
+
+// Элементы profile
+const profileButtonEdit = document.querySelector(".profile__button-edit");
+const profileName = document.querySelector(".profile__name");
+const profileProfession = document.querySelector(".profile__profession");
+
+// Элементы popup profile
+const profileEditPopup = document.querySelector("#edit-popup");
+const profileEditForm = profileEditPopup.querySelector(".popup__form");
+const profileNameInput = profileEditPopup.querySelector("#popup-name-input");
+const profileProfessionInput = profileEditPopup.querySelector(
+  "#popup-profession-input"
+);
+
+// Элемент добавления нового элемента на страницу
+const newElementButton = document.querySelector(".profile__button-add");
+
+// Элементы popup add (новый элемент)
+const newElementPopup = document.querySelector("#add-popup");
+const newElementForm = newElementPopup.querySelector(".popup__form");
+const newElementTitle = newElementPopup.querySelector("#popup-title-input");
+const newElementLink = newElementPopup.querySelector("#popup-link-input");
+
+// Элемент закрытия popup
+const closePopupButton = document.querySelectorAll(".popup__close-button");
+
+// Функции
+
+// Функция открытия popup
+function openPopup(popup) {
+  popup.classList.add("popup_opened");
+}
+
+// Функция закрытия открытого popup
+function closePopup(event) {
+  const popup = event.target.closest(".popup");
+  popup.classList.remove("popup_opened");
+}
+
+// Функция сохранения данных и закрытия popup profile
+function saveProfilePopup(event) {
+  event.preventDefault();
+
+  profileName.textContent = profileNameInput.value;
+  profileProfession.textContent = profileProfessionInput.value;
+
+  closePopup(event);
+}
+
+// Функция сохранения данных, закрытия popup add и добавления нового элемента
+function saveNewElement(event) {
+  event.preventDefault();
+
+  const element = {};
+  element.name = newElementTitle.value;
+  element.link = newElementLink.value;
+  createElements(element);
+
+  closePopup(event);
+  newElementTitle.value = "";
+  newElementLink.value = "";
+}
+
+// Функция генерирования новых элементов
+function createElements(...elements) {
   const cardsElement = document.querySelector(".elements");
-  const cardTemplate = document.querySelector("#element").content;
+  const elementTemplate = document.querySelector("#element").content;
 
-  cards.forEach((card) => {
-    const cardElement = cardTemplate.querySelector(".element").cloneNode(true);
+  elements.forEach((element) => {
+    const cardElement = elementTemplate
+      .querySelector(".element")
+      .cloneNode(true); // создание элемента
 
-    cardElement.querySelector(".element__image").src = card.link;
-    cardElement.querySelector(".element__image").alt = card.name;
-    cardElement.querySelector(".element__title").textContent = card.name;
+    cardElement.querySelector(".element__image").src = element.link; // заполнение элемента
+    cardElement.querySelector(".element__image").alt = element.name;
+    cardElement.querySelector(".element__title").textContent = element.name;
 
-    cardsElement.prepend(cardElement);
+    cardsElement.prepend(cardElement); // направление элемента в DOM
   });
 }
 
-createCards(...initialCards);
+createElements(...initialCards); // отображение начальных элементов на странице
+
+// Обрабатывание событий
+
+// Обрабатывание события popup profile
+profileButtonEdit.addEventListener("click", function () {
+  profileNameInput.value = profileName.textContent;
+  profileProfessionInput.value = profileProfession.textContent;
+
+  openPopup(profileEditPopup);
+});
+
+profileEditForm.addEventListener("submit", saveProfilePopup);
+
+// Обрабатывание события popup element (новый элемент)
+newElementButton.addEventListener("click", function () {
+  openPopup(newElementPopup);
+});
+
+// Обрабатывание события "создать" нового элемента
+newElementForm.addEventListener("submit", saveNewElement);
+
+// Обрабатывание события кнопки закрытия popup
+closePopupButton.forEach((button) =>
+  button.addEventListener("click", closePopup)
+);
