@@ -93,9 +93,13 @@ function saveNewElement(event) {
 
 // Функция установления like
 function likeElement(event) {
-  event.target
-    .closest(".element__like-button")
-    .classList.toggle("element__like-button_active");
+  const like = event.target.closest(".element__like-button");
+  like.classList.toggle("element__like-button_active");
+}
+
+// Функция удаления карточки при нажатии
+function deleteElement(event) {
+  event.target.closest(".element").remove();
 }
 
 // Функция генерирования новых элементов
@@ -115,6 +119,10 @@ function createElements(...elements) {
     cardElement
       .querySelector(".element__like-button")
       .addEventListener("click", likeElement); // обрабатывание события like
+
+    cardElement
+      .querySelector(".element__delete-button")
+      .addEventListener("click", deleteElement); // обрабатывание события удаления элемента
 
     cardsElement.prepend(cardElement); // направление элемента в DOM
   });
