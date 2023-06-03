@@ -31,11 +31,13 @@ _Третья проектная работа от сервиса онлайн-�
 
 ## Figma
 
-- [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+- [Ссылка на макет в Figma к 1 спринту](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+- [Ссылка на макет в Figma к 2 спринту](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?type=design&node-id=0-1&t=WSTXSoIgoZLBHxj4-0)
 
 ## Чеклисты к проектной работе
 
 - [Чеклист к 1 спринту проектной работы](https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-4.pdf)
+- [Чеклист ко 2 спринту проектной работы](https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-5.pdf)
 
 ## Сайт
 
