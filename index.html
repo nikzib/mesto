@@ -49,7 +49,7 @@
               <button
                 type="button"
                 class="element__like-button"
-                aria-label="Нравится"
+                aria-label="Нравиться"
               ></button>
             </div>
             <button
@@ -86,7 +86,7 @@
             placeholder="Введите описание"
           />
           <button
-            aria-label="Сохранение"
+            aria-label="Сохранить"
             class="popup__save-button"
             type="submit"
           >
@@ -94,7 +94,7 @@
           </button>
         </form>
         <button
-          aria-label="Закрытие"
+          aria-label="Закрыть"
           class="popup__close-button"
           type="button"
         ></button>
@@ -122,7 +122,7 @@
             placeholder="Ссылка на картинку"
           />
           <button
-            aria-label="Сохранение"
+            aria-label="Сохранить"
             class="popup__save-button"
             type="submit"
           >
@@ -130,11 +130,25 @@
           </button>
         </form>
         <button
-          aria-label="Закрытие"
+          aria-label="Закрыть"
           class="popup__close-button"
           type="button"
         ></button>
       </div>
+    </div>
+
+    <!-- Popup: увеличение картинки -->
+
+    <div class="popup popup_type-image">
+      <figure class="popup__image-container">
+        <img src="#" alt="#" class="popup__image" />
+        <figcaption class="popup__image-caption">#</figcaption>
+        <button
+          aria-label="Закрыть"
+          class="popup__close-button"
+          type="button"
+        ></button>
+      </figure>
     </div>
   </body>
 </html>

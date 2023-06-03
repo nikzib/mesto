@@ -51,6 +51,11 @@ const newElementForm = newElementPopup.querySelector(".popup__form");
 const newElementTitle = newElementPopup.querySelector("#popup-title-input");
 const newElementLink = newElementPopup.querySelector("#popup-link-input");
 
+// Элементы увеличенной картинки popup
+const popupImage = document.querySelector(".popup_type-image");
+const popupImageFigure = popupImage.querySelector(".popup__image");
+const popupImageCaption = popupImage.querySelector(".popup__image-caption");
+
 // Элемент закрытия popup
 const closePopupButton = document.querySelectorAll(".popup__close-button");
 
@@ -102,6 +107,18 @@ function deleteElement(event) {
   event.target.closest(".element").remove();
 }
 
+// Функция увеличения картинки при нажатии
+function zoomPopupImage(event) {
+  popupImageFigure.src = event.target.src;
+  popupImageFigure.alt = event.target.alt;
+
+  popupImageCaption.textContent = event.target
+    .closest(".element")
+    .querySelector(".element__title").textContent;
+
+  openPopup(popupImage);
+}
+
 // Функция генерирования новых элементов
 function createElements(...elements) {
   const cardsElement = document.querySelector(".elements");
@@ -123,6 +140,10 @@ function createElements(...elements) {
     cardElement
       .querySelector(".element__delete-button")
       .addEventListener("click", deleteElement); // обрабатывание события удаления элемента
+
+    cardElement
+      .querySelector(".element__image")
+      .addEventListener("click", zoomPopupImage); // обрабатывание события нажатия на картинку и её увеличение
 
     cardsElement.prepend(cardElement); // направление элемента в DOM
   });
