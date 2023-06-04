@@ -95,7 +95,7 @@ function saveNewElement(event) {
     link: newElementLink.value,
   };
 
-  initElements(pageElements, element);
+  addCard(element);
 
   closePopup(event);
   newElementForm.reset(); // использование метода reset() для очистки
@@ -125,11 +125,8 @@ function zoomPopupImage(event) {
 }
 
 // Функция инициализации элементов
-
-function addCards(elements) {
-  elemets.forEach((element) => {
-    addCard(getNewElement(element.name, element.link));
-  });
+function addCard(element) {
+  pageElements.prepend(getNewElement(element.name, element.link));
 }
 
 function initElements(box, ...elements) {
