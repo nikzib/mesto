@@ -126,6 +126,12 @@ function zoomPopupImage(event) {
 
 // Функция инициализации элементов
 
+function addCards(elements) {
+  elemets.forEach((element) => {
+    addCard(getNewElement(element.name, element.link));
+  });
+}
+
 function initElements(box, ...elements) {
   elements.forEach((element) => {
     box.prepend(getNewElement(element.name, element.link));
@@ -136,10 +142,11 @@ function initElements(box, ...elements) {
 function getNewElement(name, link) {
   // Создание элемента из шаблона
   const element = pageElementTemplate.querySelector(".element").cloneNode(true);
+  const elementImage = element.querySelector(".element__image");
 
   // Заполнение содержимого
-  element.querySelector(".element__image").src = link;
-  element.querySelector(".element__image").alt = name;
+  elementImage.src = link;
+  elementImage.alt = name;
   element.querySelector(".element__title").textContent = name;
 
   // Обработчики нажатий
