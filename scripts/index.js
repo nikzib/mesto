@@ -42,6 +42,10 @@ const profileProfessionInput = profileEditPopup.querySelector(
   "#popup-profession-input"
 );
 
+// Элементы карточек на странице
+const pageElements = document.querySelector(".elements");
+const pageElementTemplate = document.querySelector("#element").content;
+
 // Элемент добавления нового элемента на страницу
 const newElementButton = document.querySelector(".profile__button-add");
 
@@ -86,14 +90,15 @@ function saveProfilePopup(event) {
 function saveNewElement(event) {
   event.preventDefault();
 
-  const element = {};
-  element.name = newElementTitle.value;
-  element.link = newElementLink.value;
-  createElements(element);
+  const element = {
+    name: newElementTitle.value,
+    link: newElementLink.value,
+  };
+
+  initElements(pageElements, element);
 
   closePopup(event);
-  newElementTitle.value = "";
-  newElementLink.value = "";
+  newElementForm.reset(); // использование метода reset() для очистки
 }
 
 // Функция установления like
@@ -119,42 +124,42 @@ function zoomPopupImage(event) {
   openPopup(popupImage);
 }
 
-// Функция генерирования новых элементов
-function createElements(...elements) {
-  const cardsElement = document.querySelector(".elements");
-  const elementTemplate = document.querySelector("#element").content;
+// Функция инициализации элементов
 
+function initElements(box, ...elements) {
   elements.forEach((element) => {
-    const cardElement = elementTemplate
-      .querySelector(".element")
-      .cloneNode(true); // создание элемента
-
-    cardElement.querySelector(".element__image").src = element.link; // заполнение элемента
-    cardElement.querySelector(".element__image").alt = element.name;
-    cardElement.querySelector(".element__title").textContent = element.name;
-
-    cardElement
-      .querySelector(".element__like-button")
-      .addEventListener("click", likeElement); // обрабатывание события like
-
-    cardElement
-      .querySelector(".element__delete-button")
-      .addEventListener("click", deleteElement); // обрабатывание события удаления элемента
-
-    cardElement
-      .querySelector(".element__image")
-      .addEventListener("click", zoomPopupImage); // обрабатывание события нажатия на картинку и её увеличение
-
-    cardsElement.prepend(cardElement); // направление элемента в DOM
+    box.prepend(getNewElement(element.name, element.link));
   });
 }
 
-createElements(...initialCards); // отображение начальных элементов на странице
+// Функция создания из шаблона новой карточки
+function getNewElement(name, link) {
+  // Создание элемента из шаблона
+  const element = pageElementTemplate.querySelector(".element").cloneNode(true);
+
+  // Заполнение содержимого
+  element.querySelector(".element__image").src = link;
+  element.querySelector(".element__image").alt = name;
+  element.querySelector(".element__title").textContent = name;
+
+  // Обработчики нажатий
+  element
+    .querySelector(".element__image")
+    .addEventListener("click", zoomPopupImage); // обрабатывание события нажатия на картинку и её увеличение
+  element
+    .querySelector(".element__like-button")
+    .addEventListener("click", likeElement); // обрабатывание события like
+  element
+    .querySelector(".element__delete-button")
+    .addEventListener("click", deleteElement); // обрабатывание события удаления элемента
+
+  return element;
+}
 
 // Обрабатывание событий
 
 // Обрабатывание события popup profile
-profileButtonEdit.addEventListener("click", function () {
+profileButtonEdit.addEventListener("click", function (edit) {
   profileNameInput.value = profileName.textContent;
   profileProfessionInput.value = profileProfession.textContent;
 
@@ -164,7 +169,7 @@ profileButtonEdit.addEventListener("click", function () {
 profileEditForm.addEventListener("submit", saveProfilePopup);
 
 // Обрабатывание события popup element (новый элемент)
-newElementButton.addEventListener("click", function () {
+newElementButton.addEventListener("click", function (create) {
   openPopup(newElementPopup);
 });
 
@@ -175,3 +180,6 @@ newElementForm.addEventListener("submit", saveNewElement);
 closePopupButton.forEach((button) =>
   button.addEventListener("click", closePopup)
 );
+
+// Вызовы функций
+initElements(pageElements, ...initialCards); // отображение начальных элементов на странице
