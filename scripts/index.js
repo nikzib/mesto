@@ -129,11 +129,11 @@ function addCard(element) {
   pageElements.prepend(getNewElement(element.name, element.link));
 }
 
-function initElements(box, ...elements) {
+function initElements(...elements) {
   elements.forEach((element) => {
-    box.prepend(getNewElement(element.name, element.link));
+    addCard(element);
   });
-}
+} // Станислав, большое спасибо что уделили так много своего времени и направляли меня в верном направлении с указанием кода. Я просто не понимал логику, ваши подсказки и подсказки наставника/старшего студента. К сожалению JS дается мне очень тяжело, точнее не дается совсем, но я буду стараться и дальше.
 
 // Функция создания из шаблона новой карточки
 function getNewElement(name, link) {
