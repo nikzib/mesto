@@ -95,7 +95,7 @@ function saveNewElement(event) {
     link: newElementLink.value,
   };
 
-  addCard(element);
+  addCard(getNewElement(element.name, element.link));
 
   closePopup(event);
   newElementForm.reset(); // использование метода reset() для очистки
@@ -126,14 +126,14 @@ function zoomPopupImage(event) {
 
 // Функция инициализации элементов
 function addCard(element) {
-  pageElements.prepend(getNewElement(element.name, element.link));
+  pageElements.prepend(element);
 }
 
 function initElements(...elements) {
   elements.forEach((element) => {
-    addCard(element);
+    addCard(getNewElement(element.name, element.link));
   });
-} // Станислав, большое спасибо что уделили так много своего времени и направляли меня в верном направлении с указанием кода. Я просто не понимал логику, ваши подсказки и подсказки наставника/старшего студента. К сожалению JS дается мне очень тяжело, точнее не дается совсем, но я буду стараться и дальше.
+}
 
 // Функция создания из шаблона новой карточки
 function getNewElement(name, link) {
@@ -186,4 +186,4 @@ closePopupButton.forEach((button) =>
 );
 
 // Вызовы функций
-initElements(pageElements, ...initialCards); // отображение начальных элементов на странице
+initElements(...initialCards); // отображение начальных элементов на странице
